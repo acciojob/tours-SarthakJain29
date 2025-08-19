@@ -1,6 +1,16 @@
 const path = require("path");
 const HtmlWebpackPlugin= require('html-webpack-plugin');
 module.exports = {
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'https://course-api.com',
+                changeOrigin: true,
+                pathRewrite: { '^/api': '' },
+            },
+        },
+    },
+
     entry: './src/index.js',
 
     output: {
